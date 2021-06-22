@@ -1,23 +1,24 @@
 package com.yfz.mvvm_databinding.bean;
 
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+
+import com.yfz.mvvm_databinding.BR;
+
 /**
  * 学生Bean
  */
-public class StudentBean {
-    private String defaultName = "默认名字-小明";
-    private String name;
+public class StudentBean extends BaseObservable {
+    String name;
     public StudentBean(String studentName){
         this.name = studentName;
     }
-
+    @Bindable
     public String getName() {
         return name;
     }
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getDefaultName() {
-        return defaultName;
+        notifyPropertyChanged(BR.name);
     }
 }
