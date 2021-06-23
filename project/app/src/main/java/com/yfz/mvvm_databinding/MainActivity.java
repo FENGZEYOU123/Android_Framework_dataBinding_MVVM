@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText vEdtName;
     private StudentModel mStudentModel;
     private ViewClickHandlers mViewClickHandlers;
+    private BindFunction mBindFunction;
     private StudentBean mStudentBean;
 
     @Override
@@ -24,18 +25,26 @@ public class MainActivity extends AppCompatActivity {
         mViewClickHandlers = new ViewClickHandlers();
         mBinding.setViewclickhandlers(mViewClickHandlers);
 
+        //****提前绑定数据对象-实现观察者自动更新UI
         mStudentBean = new StudentBean("小明");
         mBinding.setStudentbean(mStudentBean); //绑定一个学生Bean
         mStudentModel = new StudentModel();
         mStudentModel.addStudentToList( mStudentBean );
         mBinding.setStudentmodel(mStudentModel); //绑定一个学生Model
+        //*****
 
+        //绑定方法
+        mBindFunction = new BindFunction();
+        mBinding.setBindfunction(mBindFunction);
         initial();
     }
     private void initial(){
         vEdtName = findViewById(R.id.vEdtName);
     }
 
+    /**
+     * 绑定点击事件
+     */
     public class ViewClickHandlers {
         /**
          * 处理绑定的view点击事件回调
@@ -53,10 +62,10 @@ public class MainActivity extends AppCompatActivity {
             String name = editText.getText().toString().trim();
             mStudentBean.setName(name);
             mStudentModel.addStudentToList( mStudentBean );
-//            StudentBean studentBean = new StudentBean(editText.getText().toString().trim());
-//            mBinding.setStudentbean(studentBean);
-//            mStudentModel.addStudentToList( studentBean );
-//            mBinding.setStudentmodel(mStudentModel);
+//            StudentBean studentBean = new StudentBean(editText.getText().toString().trim()); //废弃，通过观察者主动更新
+//            mBinding.setStudentbean(studentBean);  //废弃，通过观察者主动更新,不在调bind的setter方法
+//            mStudentModel.addStudentToList( studentBean ); //废弃，通过观察者主动更新
+//            mBinding.setStudentmodel(mStudentModel); //废弃，通过观察者主动更新,不在调bind的setter方法
         }
         /**
          * 处理绑定的view点击事件回调，同时也传递studentBean对象
@@ -65,6 +74,14 @@ public class MainActivity extends AppCompatActivity {
             mStudentModel.addStudentToList( studentBean );
 //            mBinding.setStudentbean(studentBean);    //更新绑定的data variables
 //            mBinding.setStudentmodel(mStudentModel); //更新绑定的data variables
+        }
+    }
+    /**
+     * 绑定方法
+     */
+    public static class BindFunction{
+        public String getAmount(StudentModel studentModel) {
+            return "绑定方法，获取当前的学生人数为："+studentModel.getStudentAmount();
         }
     }
 }

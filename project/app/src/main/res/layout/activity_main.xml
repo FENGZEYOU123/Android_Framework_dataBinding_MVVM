@@ -15,6 +15,10 @@
         <variable
             name="viewclickhandlers"
             type="ViewClickHandlers" />
+        <import type="com.yfz.mvvm_databinding.MainActivity.BindFunction"></import>
+        <variable
+            name="bindfunction"
+            type="BindFunction" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -56,5 +60,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" ></TextView>
 
+        <TextView
+            android:id="@+id/vTvBindFunction"
+            android:text="@{bindfunction.getAmount(studentmodel)}"
+            app:layout_constraintTop_toBottomOf="@+id/vTvDisplayAmount"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" ></TextView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
