@@ -40,5 +40,24 @@
             android:layout_width="100dp"
             android:layout_height="wrap_content">
         </EditText>
+        <TextView
+            android:id="@+id/vTvDisplayCheckBox"
+            android:text="@{viewmodel.checkBoxStatus?viewmodel.isChecked:viewmodel.isUnChecked}"
+            app:layout_constraintTop_toBottomOf="@+id/vEdtInput"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </TextView>
+        <CheckBox
+            android:checked="@={viewmodel.checkBoxStatus}"
+            app:layout_constraintTop_toBottomOf="@+id/vTvDisplayCheckBox"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </CheckBox>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
