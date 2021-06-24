@@ -1,10 +1,10 @@
-package com.yfz.mvvm_databinding.model;
+package com.yfz.mvvm_databinding.oneWayBind.model;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 import com.yfz.mvvm_databinding.BR;
-import com.yfz.mvvm_databinding.bean.StudentBean;
+import com.yfz.mvvm_databinding.oneWayBind.bean.StudentBean;
 
 import java.util.ArrayList;
 import java.util.List;

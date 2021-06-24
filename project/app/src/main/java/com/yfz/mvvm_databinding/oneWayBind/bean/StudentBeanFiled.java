@@ -1,4 +1,4 @@
-package com.yfz.mvvm_databinding.bean;
+package com.yfz.mvvm_databinding.oneWayBind.bean;
 
 import androidx.databinding.ObservableField;
 
