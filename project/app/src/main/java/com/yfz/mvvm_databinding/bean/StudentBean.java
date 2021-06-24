@@ -2,6 +2,7 @@ package com.yfz.mvvm_databinding.bean;
 
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
+import androidx.databinding.ObservableField;
 
 import com.yfz.mvvm_databinding.BR;
 

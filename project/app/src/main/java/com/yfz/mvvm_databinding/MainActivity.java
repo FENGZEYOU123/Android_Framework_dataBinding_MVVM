@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import com.yfz.mvvm_databinding.bean.StudentBean;
+import com.yfz.mvvm_databinding.bean.StudentBeanFiled;
 import com.yfz.mvvm_databinding.databinding.ActivityMainBinding;
 import com.yfz.mvvm_databinding.model.StudentModel;
 
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewClickHandlers mViewClickHandlers;
     private BindFunction mBindFunction;
     private StudentBean mStudentBean;
+    private StudentBeanFiled mStudentBeanFiled;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,11 @@ public class MainActivity extends AppCompatActivity {
         //绑定方法
         mBindFunction = new BindFunction();
         mBinding.setBindfunction(mBindFunction);
+
+        //绑定filed
+        mStudentBeanFiled = new StudentBeanFiled();
+        mBinding.setStudentbeanfiled(mStudentBeanFiled);
+
         initial();
     }
     private void initial(){
@@ -60,8 +67,12 @@ public class MainActivity extends AppCompatActivity {
          */
         public void onBtnClickWithEditText(View view, EditText editText){
             String name = editText.getText().toString().trim();
-            mStudentBean.setName(name);
-            mStudentModel.addStudentToList( mStudentBean );
+            mStudentBean.setName(name);  //可观察者绑定变量
+            mStudentModel.addStudentToList( mStudentBean ); //可观察者绑定变量
+
+            //--使用ObservableField声明变量后，用setter方法赋值
+            mStudentBeanFiled.name.set(name);
+            //--
 //            StudentBean studentBean = new StudentBean(editText.getText().toString().trim()); //废弃，通过观察者主动更新
 //            mBinding.setStudentbean(studentBean);  //废弃，通过观察者主动更新,不在调bind的setter方法
 //            mStudentModel.addStudentToList( studentBean ); //废弃，通过观察者主动更新
