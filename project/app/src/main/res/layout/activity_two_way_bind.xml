@@ -12,6 +12,10 @@
         <variable
             name="viewmodel"
             type="ViewModel" />
+        <import type="com.yfz.mvvm_databinding.twoWayBind.MyVM"></import>
+        <variable
+            name="mVM"
+            type="MyVM" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -59,5 +63,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </CheckBox>
+
+        <com.yfz.mvvm_databinding.twoWayBind.CustomeEditTextView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:y_content="@={mVM.mContentMLD1}"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+        </com.yfz.mvvm_databinding.twoWayBind.CustomeEditTextView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
