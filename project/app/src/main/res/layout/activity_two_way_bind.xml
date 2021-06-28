@@ -12,10 +12,6 @@
         <variable
             name="viewmodel"
             type="ViewModel" />
-        <import type="com.yfz.mvvm_databinding.twoWayBind.MyVM"></import>
-        <variable
-            name="mVM"
-            type="MyVM" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,6 +51,7 @@
             android:layout_height="wrap_content">
         </TextView>
         <CheckBox
+            android:id="@+id/vCheckBox"
             android:checked="@={viewmodel.checkBoxStatus}"
             app:layout_constraintTop_toBottomOf="@+id/vTvDisplayCheckBox"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -63,13 +60,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         </CheckBox>
-
-        <com.yfz.mvvm_databinding.twoWayBind.CustomeEditTextView
-            app:layout_constraintTop_toTopOf="parent"
+        <ImageView
+            android:id="@+id/vImgAvatar"
+            android:glideImageUrl="@{viewmodel.avatarImgUrl}"
+            app:layout_constraintTop_toBottomOf="@+id/vCheckBox"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:y_content="@={mVM.mContentMLD1}"
-            android:layout_width="match_parent"
-            android:layout_height="60dp">
-        </com.yfz.mvvm_databinding.twoWayBind.CustomeEditTextView>
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="#00F000"
+            android:layout_marginTop="20dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp">
+        </ImageView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

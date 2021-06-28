@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.yfz.mvvm_databinding.R;
 import com.yfz.mvvm_databinding.databinding.ActivityMainBinding;
@@ -21,18 +22,17 @@ import com.yfz.mvvm_databinding.databinding.ActivityTwoWayBindBinding;
 public class TwoWayBindActivity extends AppCompatActivity {
     private ActivityTwoWayBindBinding mBinding;
     private ViewModel mViewMode;
-    private MyVM myVM;
+    private ImageView imgView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mBinding = DataBindingUtil.setContentView(this,R.layout.activity_two_way_bind);
         mViewMode = new ViewModel();
         mBinding.setViewmodel(mViewMode);
-        initVM();
+        imgView = findViewById(R.id.vImgAvatar);
     }
-    private void initVM() {
-        myVM = new ViewModelProvider(this).get(MyVM.class);
-        mBinding.setMVM(myVM);
-        myVM.mContentMLD1.setValue("1");
+
+    public void doLoad(View view){
+        CustomBindingAdapter.loadImageFromUrl(imgView,mViewMode.avatarImgUrl);
     }
 }
